@@ -1,0 +1,171 @@
+{
+  "C_Cpp.autoAddFileAssociations": false,
+  "indentOneSpace.workOnSingleLine": true, // Even if 1 character on 1 line is selected - the command will work.
+  "indentOneSpace.cramReversed": true, // Outdent lines even if one of them has reached column 0 (gutter).
+  "indentOneSpace.onlyCompleteRange": false, // Indent works only when selection has nothing or whitespace characters on the sides
+  "[c]": {
+    "files.encoding": "utf8"
+  },
+  "[cpp]": {
+    "files.encoding": "utf8"
+  },
+  "terminal.integrated.profiles.linux": {
+    "linux-build-x64": {
+      "path": "bash",
+      "overrideName": true,
+      "args": [
+        "--login",
+        "-c",
+        "mkdir -p $BUILDDIR && cd $BUILDDIR && exec bash"
+      ],
+      "env": {
+        "BUILDDIR": "build/linux-build-x64",
+      }
+    }
+  },
+  "terminal.integrated.profiles.windows": {
+    "PowerShell -NoProfile": {
+      "overrideName": true,
+      "source": "PowerShell",
+      "args": [
+        "-NoProfile"
+      ],
+    },
+    "cmder": {
+      "path": "${env:windir}\\System32\\cmd.exe",
+      "overrideName": true,
+      "args": []
+    },
+    "wsl2": {
+      "path": "bash",
+      "overrideName": true,
+      "args": [
+        "--login",
+        "-c",
+        "mkdir -p build/windows-wsl2 && cd build/windows-wsl2 && exec bash"
+      ],
+      "env": {}
+    },
+    // https://www.msys2.org/docs/environments/
+    "msys2-mingw64": {
+      "path": "C:/CI-Tools/msys64/usr/bin/bash.exe",
+      "overrideName": true,
+      "args": [
+        "--login",
+        "-c",
+        "mkdir -p $BUILDDIR && PATH=\"$CODE_DIR/bin:$PATH\" && cd $BUILDDIR && exec bash"
+      ],
+      "env": {
+        "CODE_DIR": "/c/Program Files/Microsoft VS Code",
+        "BUILDDIR": "build/windows-mingw64",
+        "MSYS": "winsymlinks:nativestrict",
+        "MSYSTEM": "MINGW64",
+        "CHERE_INVOKING": "1"
+      }
+    },
+    "msys2-mingw32": {
+      "path": "C:/CI-Tools/msys64/usr/bin/bash.exe",
+      "overrideName": true,
+      "args": [
+        "--login",
+        "-c",
+        "mkdir -p $BUILDDIR && export PATH=\"$CODE_DIR/bin:$PATH\" && cd $BUILDDIR && exec bash"
+      ],
+      "env": {
+        "CODE_DIR": "/c/Program Files/Microsoft VS Code",
+        "BUILDDIR": "build/windows-mingw32",
+        "MSYS": "winsymlinks:nativestrict",
+        "MSYSTEM": "MINGW32",
+        "CHERE_INVOKING": "1"
+      }
+    },
+    "msys2-clang64": {
+      "path": "C:/CI-Tools/msys64/usr/bin/bash.exe",
+      "overrideName": true,
+      "args": [
+        "--login",
+        "-c",
+        "mkdir -p $BUILDDIR && PATH=\"$CODE_DIR/bin:$PATH\" && cd $BUILDDIR && exec bash"
+      ],
+      "env": {
+        "CODE_DIR": "/c/Program Files/Microsoft VS Code",
+        "BUILDDIR": "build/windows-clang64",
+        "MSYS": "winsymlinks:nativestrict",
+        "MSYSTEM": "CLANG64",
+        "CHERE_INVOKING": "1"
+      }
+    },
+    "msys2-clangarm64": {
+      "path": "C:/CI-Tools/msys64/usr/bin/bash.exe",
+      "overrideName": true,
+      "args": [
+        "--login",
+        "-c",
+        "mkdir -p $BUILDDIR && cd $BUILDDIR && exec bash"
+      ],
+      "env": {
+        "BUILDDIR": "build/windows-clangarm64",
+        "MSYS": "winsymlinks:nativestrict",
+        "MSYSTEM": "CLANGARM64",
+        "CHERE_INVOKING": "1"
+      }
+    },
+    "msys2-clang32": {
+      "path": "C:/CI-Tools/msys64/usr/bin/bash.exe",
+      "overrideName": true,
+      "args": [
+        "--login",
+        "-c",
+        "mkdir -p $BUILDDIR && export PATH=\"$CODE_DIR/bin:$PATH\" && cd $BUILDDIR && exec bash"
+      ],
+      "env": {
+        "CODE_DIR": "/c/Program Files/Microsoft VS Code",
+        "BUILDDIR": "build/windows-clang32",
+        "MSYS": "winsymlinks:nativestrict",
+        "MSYSTEM": "CLANG32",
+        "CHERE_INVOKING": "1"
+      }
+    },
+    "msys2-ucrt64": {
+      "path": "C:/CI-Tools/msys64/usr/bin/bash.exe",
+      "overrideName": true,
+      "args": [
+        "--login",
+        "-c",
+        "mkdir -p $BUILDDIR && cd $BUILDDIR && exec bash"
+      ],
+      "env": {
+        "BUILDDIR": "build/windows-ucrt64",
+        "MSYS": "winsymlinks:nativestrict",
+        "MSYSTEM": "UCRT64",
+        "CHERE_INVOKING": "1"
+      }
+    },
+    "msys2": {
+      "path": "C:/CI-Tools/msys64/usr/bin/bash.exe",
+      "overrideName": true,
+      "args": [
+        "--login",
+        "-c",
+        "mkdir -p $BUILDDIR && cd $BUILDDIR && exec bash"
+      ],
+      "env": {
+        "BUILDDIR": "build/windows-msys2",
+        "MSYS": "winsymlinks:nativestrict",
+        "MSYSTEM": "MSYS",
+        "CHERE_INVOKING": "1"
+      }
+    }
+  },
+  "terminal.integrated.defaultProfile.windows": "PowerShell -NoProfile",
+  "git.ignoreLimitWarning": true,
+  "cmake.additionalCompilerSearchDirs": [
+    "${env:SystemDrive}/CI-Tools/msys64/mingw64/bin",
+    "C:/Qt/Qt5.6.3/Tools/mingw492_32/bin"
+  ],
+  "cmake.buildDirectory": "${workspaceRoot}/build/${buildKitTriple}-${buildKitVersionMajor}-${buildKitVersionMinor}-${buildType}",
+  "cmake.configureArgs": [
+    // "-DQt5_DIR=C:/Qt/Qt5.6.3/5.6.3/mingw49_32/lib/cmake/Qt5",
+    "-DQt5_DIR=C:/Qt/Qt5.12.12/5.12.12/msvc2015_64/lib/cmake/Qt5",
+  ]
+}
